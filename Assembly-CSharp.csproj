@@ -68,6 +68,8 @@
     <Compile Include="Assets\CameraScript.cs" />
     <Compile Include="Assets\CameraShiftScript.cs" />
     <Compile Include="Assets\CameraWarpScript.cs" />
+    <Compile Include="Assets\CheckpointController.cs" />
+    <Compile Include="Assets\CheckPointScript.cs" />
     <Compile Include="Assets\CoinCount.cs" />
     <Compile Include="Assets\coinscript.cs" />
     <Compile Include="Assets\DisappearScript.cs" />

@@ -24,19 +24,24 @@ public class Dude2D : MonoBehaviour
     private Transform groundCheck;         // A position marking where to check if the player is grounded.
     private bool grounded;                 // Whether or not the player is grounded.
     private GameController controller;
+    private CheckpointController checkController;
     private Animator animator;             // Reference to the player's animator component.
     private Rigidbody2D rb2D;              // Reference to the player's Rigidbody2D component.
     private bool facingRight = true;       // For determining which way the player is currently facing.
     private bool jumping;                  // Is the player currently jumping?
     private Animator parentAnim;
     private bool doubleJump = false;
+
+
     private void Start()
-   
-    
     {
         parentAnim = gameObject.transform.parent.GetComponent<Animator>();
+        checkController = FindObjectOfType<CheckpointController>();
         controller = FindObjectOfType<GameController>();
-
+        if (checkController.getCheckpointPos().x != 0)
+        {
+            transform.position = checkController.getCheckpointPos();
+        }
 
     }
     private void Awake()
@@ -45,6 +50,8 @@ public class Dude2D : MonoBehaviour
         
         animator = GetComponent<Animator>();
         rb2D = GetComponent<Rigidbody2D>();
+
+       
     }
 
     private void Update()

@@ -19,6 +19,8 @@ public class GameController : MonoBehaviour {
     public Text lifeText;
     private bool dead;
     private bool outOfLives = false;
+    private CheckpointController checkpointController;
+   
 
     // Use this for initialization
     void Start () {
@@ -27,16 +29,19 @@ public class GameController : MonoBehaviour {
             instance = this;
             lives = FindObjectOfType<LifeCount>();
             lifeText.text = lives.getLives() + "";
-            dead = false;
+            dead = false;   
         }else if(instance != this)
         {
             Destroy(gameObject);
         }
         
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+
+
+
+    // Update is called once per frame
+    void Update () {
 		
         if(gameLost && Input.anyKey)
         {
@@ -48,7 +53,8 @@ public class GameController : MonoBehaviour {
 
         }else if(outOfLives && Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene(0);
+            
+            SceneManager.LoadScene(1);
             lives.setLives(3);
         }
 	}

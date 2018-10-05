@@ -3830,6 +3830,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 224681377477318052, guid: 84d4a15f4c6bc7343bfeb705ef26af11,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -10.200134
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84d4a15f4c6bc7343bfeb705ef26af11, type: 2}
   m_IsPrefabAsset: 0
@@ -4714,10 +4719,6 @@ Prefab:
     - target: {fileID: 4462510621904184, guid: 2d3cb825a21128540b7cdd36152a95f1, type: 2}
       propertyPath: m_RootOrder
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1188309857001958, guid: 2d3cb825a21128540b7cdd36152a95f1, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d3cb825a21128540b7cdd36152a95f1, type: 2}
@@ -6644,10 +6645,6 @@ Prefab:
     - target: {fileID: 4423743705558094, guid: d1962cf2858762445a77d03b95ab232f, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1696384849283134, guid: d1962cf2858762445a77d03b95ab232f, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1962cf2858762445a77d03b95ab232f, type: 2}
@@ -26111,18 +26108,6 @@ Prefab:
     - target: {fileID: 1130951803442000, guid: 1149b26110e3d7a43b786bcf429eecab, type: 2}
       propertyPath: m_Name
       value: DoubleJump (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4995936749165240, guid: 1149b26110e3d7a43b786bcf429eecab, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.99999994
-      objectReference: {fileID: 0}
-    - target: {fileID: 4995936749165240, guid: 1149b26110e3d7a43b786bcf429eecab, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4995936749165240, guid: 1149b26110e3d7a43b786bcf429eecab, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.99999994
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1149b26110e3d7a43b786bcf429eecab, type: 2}

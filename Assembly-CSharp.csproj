@@ -66,6 +66,8 @@
     <Compile Include="Assets\bossSpikeScript.cs" />
     <Compile Include="Assets\boxtrigger.cs" />
     <Compile Include="Assets\CameraScript.cs" />
+    <Compile Include="Assets\CameraShiftScript.cs" />
+    <Compile Include="Assets\CameraWarpScript.cs" />
     <Compile Include="Assets\CoinCount.cs" />
     <Compile Include="Assets\coinscript.cs" />
     <Compile Include="Assets\DisappearScript.cs" />

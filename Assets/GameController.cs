@@ -58,7 +58,9 @@ public class GameController : MonoBehaviour {
         player.SetActive(false);
     }
     public void youDiedLOL()
+
     {
+      
         if (dead) return;
         dead = true;
         lives.playerDeath();
@@ -68,6 +70,7 @@ public class GameController : MonoBehaviour {
             outOfLives = true;
         }else
         {
+            print(lives.getLives());
             gameOver.SetActive(true);
             gameLost = true;
         }

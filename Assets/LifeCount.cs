@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class LifeCount : MonoBehaviour {
     public int Lives;
+    public static LifeCount instance;
 
 	// Use this for initialization
 	void Start () {
-		
+	    if(instance == null)
+        {
+            instance = this;
+            
+        }	else if(instance != this)
+        {
+            Destroy(gameObject);
+        }
 	}
     private void Awake()
     {

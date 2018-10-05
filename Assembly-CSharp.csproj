@@ -83,6 +83,7 @@
     <Compile Include="Assets\script.cs" />
     <Compile Include="Assets\Scripts\DestroyByTime.cs" />
     <Compile Include="Assets\Scripts\Dude2D.cs" />
+    <Compile Include="Assets\Scripts\MenuController.cs" />
     <Compile Include="Assets\spikeScript.cs" />
     <Compile Include="Assets\testlol.cs" />
     <Reference Include="UnityEditor.StandardEvents">

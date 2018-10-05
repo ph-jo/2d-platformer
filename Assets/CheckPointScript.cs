@@ -9,11 +9,13 @@ public class CheckPointScript : MonoBehaviour {
     private bool active = false;
     private SpriteRenderer rend;
     private CheckpointController controller;
+    private float _id;
 	// Use this for initialization
 	void Start () {
         rend = GetComponent<SpriteRenderer>();
         controller = FindObjectOfType<CheckpointController>();
         inactiveSprite = rend.sprite;
+        _id = transform.position.sqrMagnitude;
 	}
 	
 	// Update is called once per frame
@@ -27,6 +29,11 @@ public class CheckPointScript : MonoBehaviour {
             rend.sprite = inactiveSprite;
         }
 	}
+
+    public float getId()
+    {
+        return _id;
+    }
 
 
     private void OnTriggerEnter2D(Collider2D collision)

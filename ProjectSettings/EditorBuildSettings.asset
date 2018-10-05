@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scene2Iguess.unity
     guid: ea4afa6e7a81f9444b0308c4004e2c71
+  - enabled: 1
+    path: Assets/TestScene.unity
+    guid: 78f8a167241da1946ba0de393b83ca71
   m_configObjects: {}

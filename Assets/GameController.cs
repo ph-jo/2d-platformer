@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour {
     public Text lifeText;
     private bool dead;
     private bool outOfLives = false;
-    private CheckpointController checkpointController;
+  
    
 
     // Use this for initialization
@@ -28,7 +28,15 @@ public class GameController : MonoBehaviour {
         {
             instance = this;
             lives = FindObjectOfType<LifeCount>();
-            lifeText.text = lives.getLives() + "";
+            if(lives.getLives() == 1)
+            {
+                lifeText.text = lives.getLives() + " Death";
+            }
+            else
+            {
+                lifeText.text = lives.getLives() + " Deaths";
+
+            }
             dead = false;   
         }else if(instance != this)
         {
@@ -51,12 +59,14 @@ public class GameController : MonoBehaviour {
 
            // Application.LoadLevel(Application.loadedLevel);
 
-        }else if(outOfLives && Input.GetKeyDown(KeyCode.R))
-        {
-            
-            SceneManager.LoadScene(1);
-            lives.setLives(3);
         }
+        //Commented out - Changed lifecount to deathcount, with the introduction of checkpoints, the player now has unlimited lives.
+        //else if(outOfLives && Input.GetKeyDown(KeyCode.R))
+        //{
+            
+        //    SceneManager.LoadScene(1);
+        //    lives.setLives(3);
+        //}
 	}
     public void gameCompleted()
     {
@@ -70,16 +80,17 @@ public class GameController : MonoBehaviour {
         if (dead) return;
         dead = true;
         lives.playerDeath();
-        if (lives.getLives() == 0)
-        {
-            lostTheGame.SetActive(true);
-            outOfLives = true;
-        }else
-        {
+        //Commented out - see above
+        //if (lives.getLives() == 0)
+        //{
+        //    lostTheGame.SetActive(true);
+        //    outOfLives = true;
+        //}else
+        //{
             print(lives.getLives());
             gameOver.SetActive(true);
             gameLost = true;
-        }
+        //}
         player.SetActive(false);
 
     }
@@ -94,4 +105,6 @@ public class GameController : MonoBehaviour {
         coins++;
         coinsText.text = coins + "";
     }
+
+
 }

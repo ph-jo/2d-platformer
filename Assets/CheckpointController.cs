@@ -19,6 +19,8 @@ public class CheckpointController : MonoBehaviour {
             foreach (CheckPointScript s in allcheckpoints)
             {
                 if (currentPoint == s) s.setActive(true);
+                print("Checkpoint with ID: " + s.getId());
+                if (s.getId() == PlayerPrefs.GetFloat("checkpoint")) currentPoint = s;
                 
             }
         }
@@ -53,6 +55,12 @@ public class CheckpointController : MonoBehaviour {
     {
         if(currentPoint != null) currentPoint.setActive(false);
 
+        PlayerPrefs.SetFloat("checkpoint", cps.getId());
         currentPoint = cps;
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.Save();
     }
 }

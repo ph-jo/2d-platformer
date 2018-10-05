@@ -31,7 +31,7 @@ public class Dude2D : MonoBehaviour
     private bool jumping;                  // Is the player currently jumping?
     private Animator parentAnim;
     private bool doubleJump = false;
-
+    
 
     private void Start()
     {

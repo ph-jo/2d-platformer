@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LifeCount : MonoBehaviour {
-    public int Lives;
+    public int Lives = 0;
     public static LifeCount instance;
 
 	// Use this for initialization
@@ -36,6 +36,6 @@ public class LifeCount : MonoBehaviour {
     }
     public void playerDeath()
     {
-        Lives--;
+        Lives++;
     }
 }

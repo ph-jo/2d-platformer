@@ -47,6 +47,10 @@ public class BossScript : MonoBehaviour {
    private bool isIdle = false;
     private bool grounded = true;
     private Camera main;
+    private SpriteRenderer bossSpriteRenderer;
+
+    public GameObject arenaWall;
+
     // Use this for initialization
     void Start()
     {
@@ -58,6 +62,7 @@ public class BossScript : MonoBehaviour {
         bossAnim = GetComponent<Animator>();
         player = FindObjectOfType<Dude2D>();
         startpos = transform.position;
+        bossSpriteRenderer = GetComponent<SpriteRenderer>();
     }
     IEnumerator Intro()
     {
@@ -268,8 +273,7 @@ public class BossScript : MonoBehaviour {
         {
             deathAnimation.transform.position = transform.position;
             Instantiate(deathAnimation);
-            testlol xd = FindObjectOfType<testlol>();
-            if (xd != null) Destroy(xd);
+            arenaWall.SetActive(false);
          
         }
 
@@ -314,11 +318,12 @@ public class BossScript : MonoBehaviour {
                 //}
 
 
-                if (player.transform.position.x > (transform.position.x - 20) && player.transform.position.y > 25f)
+                if (player.transform.position.x > (transform.position.x - 20) && bossSpriteRenderer.isVisible)
                 {
-                    main.orthographicSize = 15;
-                    main.transform.Find("backgrounds").transform.localScale = new Vector3(2, 2, 2);
+                //    main.orthographicSize = 15;
+                  //  main.transform.Find("backgrounds").transform.localScale = new Vector3(2, 2, 2);
                     StartCoroutine(Intro());
+                    arenaWall.SetActive(true);
                 }
                 //if (time >= introTime)
                 //{

@@ -31,18 +31,28 @@ public class Dude2D : MonoBehaviour
     private bool jumping;                  // Is the player currently jumping?
     private Animator parentAnim;
     private bool doubleJump = false;
-    
+    private float startSpeed;
 
     private void Start()
     {
         parentAnim = gameObject.transform.parent.GetComponent<Animator>();
         checkController = FindObjectOfType<CheckpointController>();
         controller = FindObjectOfType<GameController>();
-        if (checkController.getCheckpointPos().x != 0)
-        {
-            transform.position = checkController.getCheckpointPos();
-        }
 
+        try{
+            
+            if(checkController.getCheckpointPos().x != 0.0f) setSpawnPosition(checkController.getCheckpointPos());
+        }catch(NullReferenceException e)
+        {
+            //LOL
+        }
+        startSpeed = runSpeed;
+
+
+    }
+    public void setSpawnPosition(Vector3 spawnPos)
+    {
+        transform.position = spawnPos;
     }
     private void Awake()
     {
@@ -56,6 +66,7 @@ public class Dude2D : MonoBehaviour
 
     private void Update()
     {
+
         if (!jumping)
         {
             jumping = Input.GetButtonDown("Jump");
@@ -63,12 +74,12 @@ public class Dude2D : MonoBehaviour
         if (sprint)
         {
             isSprinting = Input.GetKey(KeyCode.LeftShift);
-            
+
         }
-        
     }
 
     private void FixedUpdate()
+
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         Move(horizontal, jumping);
@@ -106,7 +117,9 @@ public class Dude2D : MonoBehaviour
             //  Debug.Log("y velocity: " + rb2D.velocity.y);
             if (grounded || rb2D.velocity.y > 0 && rb2D.velocity.y != 10)
             {
+
                 controller.youDiedLOL();
+               
             }
             else {
                 if(es != null && es.getHp() >= 1)
@@ -115,7 +128,7 @@ public class Dude2D : MonoBehaviour
                     //Destroy(collision.
                     print("removing 1 hp lol");
 
-                }else if (bs != null)
+                }else if (bs != null && bs.getHp() >= 1)
                 {
                     bs.removeHp();
                     print("Removing 1 hp from boss lol");
@@ -123,6 +136,8 @@ public class Dude2D : MonoBehaviour
                 else
                 {
                     Destroy(collision.transform.parent.gameObject);
+                  
+
                 }
                 rb2D.velocity = new Vector2(rb2D.velocity.x, 0);
                 rb2D.AddForce(new Vector2(0f, 10), ForceMode2D.Impulse);
@@ -149,11 +164,11 @@ public class Dude2D : MonoBehaviour
     {
         if (isSprinting)
         {
-            runSpeed = 8f;
+            runSpeed = startSpeed * 1.5f;
         }
         else
         {
-            runSpeed = 5f;
+            runSpeed = startSpeed;
         }
         // The Speed animator parameter is set to the absolute value of the horizontal input.
         // animator.SetFloat("Speed", Mathf.Abs(move));

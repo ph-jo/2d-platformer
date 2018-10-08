@@ -18,8 +18,7 @@ public class GameController : MonoBehaviour {
     private LifeCount lives;
     public Text lifeText;
     private bool dead;
-    private bool outOfLives = false;
-  
+    private int saveID;
    
 
     // Use this for initialization
@@ -60,6 +59,11 @@ public class GameController : MonoBehaviour {
            // Application.LoadLevel(Application.loadedLevel);
 
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            youDiedLOL();
+        }
         //Commented out - Changed lifecount to deathcount, with the introduction of checkpoints, the player now has unlimited lives.
         //else if(outOfLives && Input.GetKeyDown(KeyCode.R))
         //{
@@ -87,7 +91,6 @@ public class GameController : MonoBehaviour {
         //    outOfLives = true;
         //}else
         //{
-            print(lives.getLives());
             gameOver.SetActive(true);
             gameLost = true;
         //}
@@ -105,6 +108,8 @@ public class GameController : MonoBehaviour {
         coins++;
         coinsText.text = coins + "";
     }
+
+   
 
 
 }

@@ -8,21 +8,32 @@ public class CheckpointController : MonoBehaviour {
     private Vector3 currentCheckpointPos;
     private CheckPointScript currentPoint;
     private CheckPointScript[] allcheckpoints;
+    private Dude2D player;
+    //public int currentLevelX { get; set; }
+    //public int currentLevelY {  get; set; }
     // Use this for initialization
     void Start () {
 		if(instance == null)
         {
             instance = this;
+            player = FindObjectOfType<Dude2D>();
             currentCheckpointPos = new Vector3();
             allcheckpoints = FindObjectsOfType<CheckPointScript>();
-
+            print("Checkpoint in playeprefs: " + PlayerPrefs.GetFloat("checkpoint"));
             foreach (CheckPointScript s in allcheckpoints)
             {
-                if (currentPoint == s) s.setActive(true);
-                print("Checkpoint with ID: " + s.getId());
-                if (s.getId() == PlayerPrefs.GetFloat("checkpoint")) currentPoint = s;
                 
+
+                print("Checkpoint with ID: " + s.getId());
+                if (s.getId() == PlayerPrefs.GetFloat("checkpoint"))
+                {
+                    setCurrentCheckpoint(s);
+                   // currentPoint = s;
+                    currentPoint.setActive(true);
+                    player.setSpawnPosition(currentPoint.transform.position);
+                }
             }
+            print("Current checkpoint: " + currentPoint.name);
         }
         else if(instance != this)
         {
@@ -40,6 +51,7 @@ public class CheckpointController : MonoBehaviour {
 	}
     public Vector3 getCheckpointPos()
     {
+
         if (currentCheckpointPos != null)
         {
             return currentCheckpointPos;
@@ -54,8 +66,9 @@ public class CheckpointController : MonoBehaviour {
     public void setCurrentCheckpoint(CheckPointScript cps)
     {
         if(currentPoint != null) currentPoint.setActive(false);
-
+        currentCheckpointPos = cps.transform.position;
         PlayerPrefs.SetFloat("checkpoint", cps.getId());
+        PlayerPrefs.Save();
         currentPoint = cps;
     }
 
@@ -63,4 +76,5 @@ public class CheckpointController : MonoBehaviour {
     {
         PlayerPrefs.Save();
     }
+
 }

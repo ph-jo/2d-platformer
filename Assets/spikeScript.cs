@@ -12,20 +12,31 @@ public class spikeScript : MonoBehaviour {
     [SerializeField]
     private LayerMask target;
     private GameController controller;
+    private SpriteRenderer rend;
+
+    private bool active = true;
 	// Use this for initialization
 	void Start () {
         rb2D = GetComponent<Rigidbody2D>();
         controller = FindObjectOfType<GameController>();
+        rend = GetComponent<SpriteRenderer>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (!rend.isVisible)
+        {
+            active = false;
+        }
+        else
+        {
+            active = true;
+        }
 	}
 
     private void FixedUpdate()
     {
-        if (!falling)
+        if (!falling && active)
         {
             RaycastHit2D ray = Physics2D.Raycast(transform.position, -Vector2.up, Mathf.Infinity, target);
 
@@ -35,7 +46,7 @@ public class spikeScript : MonoBehaviour {
                 Destroy(gameObject, 15);
             }
         }
-        else
+        else if(falling && active)
         {
             rb2D.velocity = new Vector2(0, -spikeSpeed);
             //rb2D.AddForce(-Vector2.up * spikeSpeed * Time.time);

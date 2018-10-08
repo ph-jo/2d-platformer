@@ -11,6 +11,7 @@ public class LifeCount : MonoBehaviour {
 	    if(instance == null)
         {
             instance = this;
+            Lives = PlayerPrefs.GetInt("lives");
             
         }	else if(instance != this)
         {
@@ -19,7 +20,6 @@ public class LifeCount : MonoBehaviour {
 	}
     private void Awake()
     {
-       
         DontDestroyOnLoad(this);
     }
     // Update is called once per frame
@@ -29,13 +29,16 @@ public class LifeCount : MonoBehaviour {
     public void setLives(int lives)
     {
         Lives = lives;
+        PlayerPrefs.SetInt("lives", lives);
     }
     public int getLives()
     {
-        return Lives;
+        //   return Lives;
+        return PlayerPrefs.GetInt("lives");
     }
     public void playerDeath()
     {
         Lives++;
+        PlayerPrefs.SetInt("lives", Lives);
     }
 }

@@ -44,31 +44,16 @@ public class CameraShiftScript : MonoBehaviour {
             float previousposY = transform.position.y;
             if(deltaX >= 17.5 || deltaX <= -17.5)
             {
-                if (deltaX > 0)
-                {
-                    previousposX += toMoveX;
-                    transform.position = new Vector3(previousposX, previousposY, transform.position.z);
-                }
-                else
-                {
-                    previousposX -= toMoveX;
-                    transform.position = new Vector3(previousposX, previousposY, transform.position.z);
-                }
-                
+                if (deltaX > 0) previousposX += toMoveX;
+                else previousposX -= toMoveX;     
+
             }
             else if(deltaY >= 9 || deltaY <= -9)
             {
-                if(deltaY > 0)
-                {
-                    previousposY += toMoveY;
-                    transform.position = new Vector3(previousposX, previousposY, transform.position.z);
-                }
-                else
-                {
-                    previousposY -= toMoveY;
-                    transform.position = new Vector3(previousposX, previousposY, transform.position.z);
-                }
+                if(deltaY > 0) previousposY += toMoveY;
+                else previousposY -= toMoveY;
             }
+            transform.position = new Vector3(previousposX, previousposY, transform.position.z);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class beet_flying_script : MonoBehaviour {
@@ -19,14 +18,7 @@ public class beet_flying_script : MonoBehaviour {
         transform.position = new Vector2(transform.position.x, transform.position.y + xd);
        
      
-        if (xd > 0)
-        {
-            goingUp = true;
-        }
-        else
-        {
-            goingUp = false;
-        }
+        goingUp = xd > 0;
       
 	}
 	
@@ -53,18 +45,7 @@ public class beet_flying_script : MonoBehaviour {
     private void FixedUpdate()
     {
         if (transform.position.y > topPos || transform.position.y < bottomPos) goingUp = !goingUp;
-        if (goingUp)
-        {
-              rb2d.velocity = new Vector2(0, 3);
-            //rb2d.AddForce(Vector2.up * 20);
-
-        }else
-        {
-           // rb2d.AddForce(-Vector2.down * 20);
-            rb2d.velocity = new Vector2(0, -3);
-        }
-
-        
+        rb2d.velocity = goingUp ? new Vector2(0, 3) : new Vector2(0, -3);
     }
 
 }

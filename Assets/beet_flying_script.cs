@@ -13,8 +13,8 @@ public class beet_flying_script : MonoBehaviour {
     // Use this for initialization  
     void Start () {
         rb2d = GetComponent<Rigidbody2D>();
-        topPos = transform.position.y + 2f;
-        bottomPos = transform.position.y - 2f;
+        topPos = transform.position.y + 1.5f;
+        bottomPos = transform.position.y - 1.5f;
         float xd = Random.Range(-1f, 1f);
         transform.position = new Vector2(transform.position.x, transform.position.y + xd);
        

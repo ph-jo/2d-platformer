@@ -67,12 +67,14 @@
     <Compile Include="Assets\boxtrigger.cs" />
     <Compile Include="Assets\CameraScript.cs" />
     <Compile Include="Assets\CameraShiftScript.cs" />
+    <Compile Include="Assets\ChasePlayerScript.cs" />
     <Compile Include="Assets\CheckpointController.cs" />
     <Compile Include="Assets\CheckPointScript.cs" />
     <Compile Include="Assets\CoinCount.cs" />
     <Compile Include="Assets\coinscript.cs" />
     <Compile Include="Assets\DisappearScript.cs" />
     <Compile Include="Assets\DisintegratingBlock.cs" />
+    <Compile Include="Assets\DoorScript.cs" />
     <Compile Include="Assets\EnemyScript.cs" />
     <Compile Include="Assets\GameController.cs" />
     <Compile Include="Assets\GameWonScript.cs" />
@@ -83,8 +85,10 @@
     <Compile Include="Assets\Scripts\DestroyByTime.cs" />
     <Compile Include="Assets\Scripts\Dude2D.cs" />
     <Compile Include="Assets\Scripts\MenuController.cs" />
+    <Compile Include="Assets\SpawnEnemy.cs" />
     <Compile Include="Assets\spikeScript.cs" />
     <Compile Include="Assets\testlol.cs" />
+    <Compile Include="Assets\testscript.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Ph/Documents/GitHub/Spilprojekt/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

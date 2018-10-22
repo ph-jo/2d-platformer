@@ -64,13 +64,7 @@ public class GameController : MonoBehaviour {
         {
             youDiedLOL();
         }
-        //Commented out - Changed lifecount to deathcount, with the introduction of checkpoints, the player now has unlimited lives.
-        //else if(outOfLives && Input.GetKeyDown(KeyCode.R))
-        //{
-            
-        //    SceneManager.LoadScene(1);
-        //    lives.setLives(3);
-        //}
+
 	}
     public void gameCompleted()
     {
@@ -84,16 +78,10 @@ public class GameController : MonoBehaviour {
         if (dead) return;
         dead = true;
         lives.playerDeath();
-        //Commented out - see above
-        //if (lives.getLives() == 0)
-        //{
-        //    lostTheGame.SetActive(true);
-        //    outOfLives = true;
-        //}else
-        //{
-            gameOver.SetActive(true);
-            gameLost = true;
-        //}
+
+        gameOver.SetActive(true);
+        gameLost = true;
+
         player.SetActive(false);
 
     }

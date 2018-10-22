@@ -8,6 +8,7 @@ public class CheckpointController : MonoBehaviour {
     private Vector3 currentCheckpointPos;
     private CheckPointScript currentPoint;
     private CheckPointScript[] allcheckpoints;
+    private List<DoorScript> unlockedDoors;
     private Dude2D player;
     //public int currentLevelX { get; set; }
     //public int currentLevelY {  get; set; }
@@ -19,21 +20,16 @@ public class CheckpointController : MonoBehaviour {
             player = FindObjectOfType<Dude2D>();
             currentCheckpointPos = new Vector3();
             allcheckpoints = FindObjectsOfType<CheckPointScript>();
-            print("Checkpoint in playeprefs: " + PlayerPrefs.GetFloat("checkpoint"));
             foreach (CheckPointScript s in allcheckpoints)
             {
-                
-
                 print("Checkpoint with ID: " + s.getId());
                 if (s.getId() == PlayerPrefs.GetFloat("checkpoint"))
                 {
                     setCurrentCheckpoint(s);
-                   // currentPoint = s;
                     currentPoint.setActive(true);
                     player.setSpawnPosition(currentPoint.transform.position);
                 }
             }
-            print("Current checkpoint: " + currentPoint.name);
         }
         else if(instance != this)
         {
@@ -49,6 +45,15 @@ public class CheckpointController : MonoBehaviour {
     void Update () {
 		
 	}
+    public void resetCheckpoints()
+    {
+        foreach (CheckPointScript item in allcheckpoints)
+        {
+            item.setActive(false);
+        }
+        setCurrentCheckpoint(null);
+    }
+    
     public Vector3 getCheckpointPos()
     {
 
@@ -66,8 +71,17 @@ public class CheckpointController : MonoBehaviour {
     public void setCurrentCheckpoint(CheckPointScript cps)
     {
         if(currentPoint != null) currentPoint.setActive(false);
-        currentCheckpointPos = cps.transform.position;
-        PlayerPrefs.SetFloat("checkpoint", cps.getId());
+        if(cps!=null)
+        {
+            setCheckPointPos(cps.transform.position);
+            PlayerPrefs.SetFloat("checkpoint", cps.getId());
+
+        }
+        else
+        {
+            setCheckPointPos(new Vector3());
+        }
+
         PlayerPrefs.Save();
         currentPoint = cps;
     }
@@ -76,5 +90,11 @@ public class CheckpointController : MonoBehaviour {
     {
         PlayerPrefs.Save();
     }
+
+    public void UnlockDoor(DoorScript ds)
+    {
+        
+    }
+
 
 }

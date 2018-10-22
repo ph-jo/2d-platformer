@@ -237,7 +237,7 @@ public class BossScript : MonoBehaviour {
         while (t < duration)
         {
             t2 += Time.deltaTime;
-            if (t2 > 0.023f)
+            if (t2 > 0.045f)
             {
                 FireProjectile();
                 t2 = 0.0f;
@@ -272,7 +272,7 @@ public class BossScript : MonoBehaviour {
         if (deathAnimation != null && !isQuitting)
         {
             deathAnimation.transform.position = transform.position;
-            Instantiate(deathAnimation);
+            Instantiate(deathAnimation);      
             arenaWall.SetActive(false);
          
         }
@@ -318,7 +318,7 @@ public class BossScript : MonoBehaviour {
                 //}
 
 
-                if (player.transform.position.x > (transform.position.x - 20) && bossSpriteRenderer.isVisible)
+                if (player.transform.position.x > (transform.position.x - 20) && bossSpriteRenderer.isVisible && player.transform.position.x < transform.position.x)
                 {
                 //    main.orthographicSize = 15;
                   //  main.transform.Find("backgrounds").transform.localScale = new Vector3(2, 2, 2);

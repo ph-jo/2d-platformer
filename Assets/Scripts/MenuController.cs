@@ -9,13 +9,18 @@ public class MenuController : MonoBehaviour {
     public static MenuController instance;
     public static MenuController settingsInstance;
     private bool isActive;
+    private CheckpointController cController;
+    private GameController gController;
+    private LifeCount lifeCount;
 	// Use this for initialization
 	void Start () {
         if(instance == null)
         {
             isActive = true;
             instance = this;
-
+            cController = FindObjectOfType<CheckpointController>();
+            gController = FindObjectOfType<GameController>();
+            lifeCount = FindObjectOfType<LifeCount>();
         }
         else
         {
@@ -69,6 +74,15 @@ public class MenuController : MonoBehaviour {
         Debug.Log(otherCanvas.name);
         
 
+    }
+
+    public void NewGame()
+    {
+        PlayerPrefs.DeleteAll();
+        cController.resetCheckpoints();
+        lifeCount.setLives(-1);
+        gController.youDiedLOL();
+        startGame();
     }
  
     public void ExitGame()

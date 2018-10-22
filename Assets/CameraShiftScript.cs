@@ -11,7 +11,7 @@ public class CameraShiftScript : MonoBehaviour {
     private float deltaX;
 
     private float toMoveX = 35;
-    private float toMoveY = 18;
+    private float toMoveY = 19;
     
     // Use this for initialization
     void Start()

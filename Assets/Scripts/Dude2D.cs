@@ -108,6 +108,10 @@ public class Dude2D : MonoBehaviour
     {
         EnemyScript es = collision.GetComponentInParent<EnemyScript>();
         BossScript bs = collision.GetComponentInParent<BossScript>();
+        if(collision.transform.tag == "IrregularEnemy")
+        {
+            controller.youDiedLOL();
+        }
         if (collision.transform.tag == "enemy" || collision.transform.tag == "boss")
             
         {
@@ -133,6 +137,7 @@ public class Dude2D : MonoBehaviour
                     bs.removeHp();
                     print("Removing 1 hp from boss lol");
                 }
+              
                 else
                 {
                     Destroy(collision.transform.parent.gameObject);

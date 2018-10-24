@@ -1,8 +1,8 @@
 WindowsStandalone
 PlayerPath?
-C:/Users/Christopher/Desktop/shitty jumper/2dprojekt.exe
+C:/Users/Ph/Documents/GitHub/Spilprojekt/Builds/2dprojekt.exe
 SceneListBegin?
-Assets/Scenes/boss.unity
+Assets/TestScene.unity
 SceneListEnd?
 c422dd62785a6d0afa870fbd111886ce Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 7b803eb2910e9b4cd5e521ae07b9f7d6 Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
@@ -18,6 +18,7 @@ c7dd12c15208b0447e101f80038706df UnityEngine.Timeline.dll:UnityEngine.Timeline.A
 0ddb2c46096a1e59e0dce07886ce4769 UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 0ddb2c46096a1e59e0dce07886ce4769 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 64f3a13c1277a7f1324321d93d0ec13b UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
+9268bd48730ecfcf4193847dcf4eae19 Assembly-CSharp.dll:.BatDirectionScript
 f6637497451c9a030c421de4a1ad5cdb Unity.TextMeshPro.dll:TMPro.TMP_ScrollbarEventHandler
 b14b4630cc47b6e9ea8a644551a6a8cc Unity.TextMeshPro.dll:TMPro.TMP_Text
 53cefe5d98cadefbab750835e70b89c0 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
@@ -114,8 +115,13 @@ da21fc3f8056b1f91c3dd09c7bf4f90a UnityEngine.Networking.dll:UnityEngine.Networki
 fc061f3ae8a876c0687e86378d4a447c UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 7ca56e063bd071986fff4f513cc4f477 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 0a006f3734181ba8b26758f0866152c0 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
+486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.CameraShiftScript
+d69c96cdaee3b707e628ddcef1a55726 Assembly-CSharp.dll:.MenuController
+2993299aab9251eb2faf2c78c676895d Assembly-CSharp.dll:.AddBossWalls
+9268bd48730ecfcf4193847dcf4eae19 Assembly-CSharp.dll:.GarlicBreadScript
 382b8ef512fa8d6108723a01b57af65b UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsEventTracker
 d22c788799ee45d8676254eccf20e8b8 UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsTracker
+d9c2d21fc3e0327952faaa7d479ad284 Assembly-CSharp.dll:.CheckPointScript
 56a4dd72a972b95458ebf75afb224a57 Assembly-CSharp.dll:.DestroyByTime
 d75dc834c5dec688db75a55a1724c90f UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 486cd95c82d8305219c352c06b776e1f UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
@@ -123,13 +129,18 @@ e1ea12ca952c81d81a9a21fdf34446ed UnityEngine.HoloLens.dll:UnityEngine.EventSyste
 98d69a140ec0084cde3b6a5e09aea295 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 dfd33ff9ae3ce8d7ca1f22b475ec2387 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 96f3ea9f23b6f08e60710ebb4af49174 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
-b33b056b7fb75ef5e268c3a3c1c6935d Assembly-CSharp.dll:.EnemyScript
+54077c0ae59156bc6bcbd656a5261eb0 Assembly-CSharp.dll:.EnemyScript
+486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.ChasePlayerScript
+dcc05fdcff7d071349be5430fac22428 Assembly-CSharp.dll:.DisappearScript
+486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.boxtrigger
 6dc173100da62e8d928009b6e4837985 Assembly-CSharp.dll:.CameraScript
 f16835701e71dd5d6fb1fed4b7aff1d8 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 486cd95c82d8305219c352c06b776e1f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
+9406c528db7e0c984cc8dd9a3ac2978e Assembly-CSharp.dll:.testscript
 aedc83c86fc8811e27126f8de3de4325 Assembly-CSharp.dll:.LifeCount
 81a8887173776cf6bcf89f3818825ce6 Assembly-CSharp.dll:.JumpReplenisher
 eaf0bcdb10d442a4029d615f41d09957 Unity.TextMeshPro.dll:TMPro.TextContainer
+4dd563e578003270eb5141937a812147 Assembly-CSharp.dll:.bossSpikeScript
 201273fb4f889724fb090164b7d6c657 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 486cd95c82d8305219c352c06b776e1f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 0f27c39183b9eb95eba0a228bea28273 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -161,6 +172,7 @@ e033f131358cea5a0eabf9561e781deb UnityEngine.TestRunner.dll:UnityEngine.TestTool
 70f7dc248db3379548a88e8d4fa049f8 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 28a95668dd28649297d595834fe8417e UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSoundfieldExtension
 28a95668dd28649297d595834fe8417e UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSourceExtension
+e87de3e4232465212cefd2a9f45cf3eb Assembly-CSharp.dll:.VampireBossScript
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.KillScript
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.CoinCount
 d75dc834c5dec688db75a55a1724c90f UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
@@ -169,12 +181,17 @@ e1ea12ca952c81d81a9a21fdf34446ed UnityEngine.HoloLens.dll:UnityEngine.EventSyste
 98d69a140ec0084cde3b6a5e09aea295 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 dfd33ff9ae3ce8d7ca1f22b475ec2387 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 aac9c55ae7ba4b95b852a7d9c191acd1 Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
+6baf1205901d7829aaccb53d762c7eea Assembly-CSharp.dll:.BossScript
 b58bc0b798703ce8dfff81a1c97dbbb1 Assembly-CSharp.dll:.spikeScript
+486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.DoorScript
 0a006f3734181ba8b26758f0866152c0 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.GameWonScript
+486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.testlol
+486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.DisintegratingBlock
 e04611b8715e6833d2bd7010fc6be10b Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 2f9af06a78208a67db480e9bfed4a076 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 9318334b30e9f195f573b2ce00154b95 Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
+486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.CheckpointController
 93307bd34e39d73fd24e00ec39c25a91 Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
+6e02b3c78ff5bc007d79d6af6e7d2e08 Assembly-CSharp.dll:.SpawnEnemy
 ca0a40ffa2393f7214bf0d97eb4987a5 Assembly-CSharp.dll:.Dude2D
-486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.BossScript

@@ -43,9 +43,13 @@ public class VampireBossScript : MonoBehaviour {
 
         if(time>2f && time < 5f && state == State.IDLE && !doneIntro)
         {
-            state = State.INTRO;
-            arenaWalls.SetActive(true);
-            doneIntro = true;
+            if(dude.transform.position.x > (transform.position.x-8) && dude.transform.position.y <= transform.position.y + 10)
+            {
+                state = State.INTRO;
+                arenaWalls.SetActive(true);
+                doneIntro = true;
+            }
+            
         }
 
 

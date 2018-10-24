@@ -107,6 +107,7 @@ TextureImporter:
     21300204: boss_death
     21300206: boss_move
     21300208: boss_idk
+    21300210: invisible
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -1806,6 +1807,26 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 9420cafaef5a63948a1c367d406a02fd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: invisible
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 39
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69fbd87d836dff1429aa8e6bf6769a7f
       vertices: []
       indices: 
       edges: []

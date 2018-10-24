@@ -129,7 +129,6 @@ public class Dude2D : MonoBehaviour
                 if(es != null && es.getHp() >= 1)
                 { 
                         es.removeHp();
-                    //Destroy(collision.
                     print("removing 1 hp lol");
 
                 }else if (bs != null && bs.getHp() >= 1)

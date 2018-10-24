@@ -9,6 +9,7 @@ TagManager:
   - DoubleJump
   - boss
   - IrregularEnemy
+  - VampireBoss
   layers:
   - Default
   - TransparentFX

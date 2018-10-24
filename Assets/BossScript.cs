@@ -201,9 +201,6 @@ public class BossScript : MonoBehaviour {
             {
                 grounded = false;
                 enemy_Rigidbody.AddForce(new Vector2(0, 4));
-            //    enemy_Rigidbody.constraints = RigidbodyConstraints2D.None;
-             //   isFlying = false;
-             //   flyAnimation.SetActive(false);
             }
         }
         else
@@ -213,9 +210,6 @@ public class BossScript : MonoBehaviour {
             if (transform.position.y <= maxHeight - 6.5f)
             {
                 grounded = true;
-         //       transform.position = startpos;
-    //            enemy_Rigidbody.velocity = new Vector2(0, 0);
-                //StartCoroutine(toRunning());
                 state = State.IDLE;
             }
         }
@@ -337,22 +331,6 @@ public class BossScript : MonoBehaviour {
                     LookForPlayer();
                 }
 
-                break;
-            case State.ATTACK_1:
-                //do attack one
-                break;
-            case State.ATTACK_2:
-                //do attack two
-                break;
-            case State.JUMP_ATTACK:
-                //jump towards player
-                JumpAttack();
-                break;
-            case State.FRENZY:
-                //go berserk
-                break;
-            case State.DEATH:
-                //die lmfao
                 break;
             case State.FLYING_SPIKES:
                 flyWithSpikes();

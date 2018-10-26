@@ -14,7 +14,7 @@ public class VampireBossScript : MonoBehaviour {
     public GameObject maxX;
     public GameObject minX;
 
-    private int health = 1;
+    private int health = 3;
     private State state = State.IDLE;
     private float time = 0.0f;
     private Animator anim;
@@ -43,12 +43,11 @@ public class VampireBossScript : MonoBehaviour {
 
         if(time>2f && time < 5f && state == State.IDLE && !doneIntro)
         {
-            if(dude.transform.position.x > (transform.position.x-8) && dude.transform.position.y <= transform.position.y + 10)
-            {
+       
                 state = State.INTRO;
                 arenaWalls.SetActive(true);
                 doneIntro = true;
-            }
+            
             
         }
 
@@ -92,10 +91,15 @@ public class VampireBossScript : MonoBehaviour {
         }
         if(time > 10f)
         {
-            
-            //state = State.ATTACK;
+
+           // StartCoroutine(SpecialToAttack());
         }
     }
+
+    //private IEnumerator SpecialToAttack()
+    //{
+        
+    //}
 
     private IEnumerator Special()
     {
@@ -120,7 +124,7 @@ public class VampireBossScript : MonoBehaviour {
                 }
                 else
                 {
-                    Instantiate(bat, batSpawner.transform);
+                    SpawnBat();
                 }
                 t2 = 0.0f;
             }
@@ -174,7 +178,7 @@ public class VampireBossScript : MonoBehaviour {
                 transform.position = tpPos;
                 print("do the thing");
             }
-            if (attackCount <= 3)
+            if (attackCount < 3)
             {
                 StartCoroutine(Attack());
             }

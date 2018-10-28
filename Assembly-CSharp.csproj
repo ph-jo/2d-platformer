@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ActivateBossScript.cs" />
     <Compile Include="Assets\AddBossWalls.cs" />
     <Compile Include="Assets\BatDirectionScript.cs" />
     <Compile Include="Assets\beet_flying_script.cs" />

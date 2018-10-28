@@ -13,7 +13,7 @@ public class VampireBossScript : MonoBehaviour {
     public GameObject doubleJumps;
     public GameObject maxX;
     public GameObject minX;
-
+    
     private int health = 3;
     private State state = State.IDLE;
     private float time = 0.0f;
@@ -24,7 +24,7 @@ public class VampireBossScript : MonoBehaviour {
     private bool doneIntro = false;
     private int attackCount = 0;
     private bool isAttacking = false;
-    
+    private bool active = false;
 	// Use this for initialization
 	void Start () {
         gameController = FindObjectOfType<GameController>();
@@ -37,11 +37,15 @@ public class VampireBossScript : MonoBehaviour {
 		
 	}
 
+    public void Activate()
+    {
+        active = true;
+    }
     private void FixedUpdate()
     {
         time += Time.deltaTime;
 
-        if(time>2f && time < 5f && state == State.IDLE && !doneIntro)
+        if(active && state == State.IDLE && !doneIntro)
         {
        
                 state = State.INTRO;

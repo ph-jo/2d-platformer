@@ -22,7 +22,7 @@ public class BatDirectionScript : MonoBehaviour {
         gc = FindObjectOfType<GameController>();
         rb2d = GetComponent<Rigidbody2D>();
         Destroy(gameObject, 12f);
-        int spawnArea = Mathf.CeilToInt(Random.Range(0, 4));
+        int spawnArea = Mathf.FloorToInt(Random.Range(0, 4));
         float spawnRangeY = Random.Range(-7, 8);
         float spawnRangeX = Random.Range(-14.5f, 16.5f);
         Vector3 spawnPos = SpawnPoint.transform.position;
@@ -67,7 +67,7 @@ public class BatDirectionScript : MonoBehaviour {
     {
         if(collision.tag == "Player")
         {
-           // gc.youDiedLOL();
+           gc.youDiedLOL();
         }
     }
 

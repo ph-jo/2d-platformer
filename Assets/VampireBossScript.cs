@@ -12,7 +12,6 @@ public class VampireBossScript : MonoBehaviour {
     public GameObject garlicBread;
     public GameObject doubleJumps;
     public GameObject maxX;
-    public GameObject minX;
     
     private int health = 3;
     private State state = State.IDLE;
@@ -25,12 +24,18 @@ public class VampireBossScript : MonoBehaviour {
     private int attackCount = 0;
     private bool isAttacking = false;
     private bool active = false;
+    private bool flipped = false;
+    private BoxCollider2D coll;
+
+    private CapsuleCollider2D coll2;
 	// Use this for initialization
 	void Start () {
         gameController = FindObjectOfType<GameController>();
         dude = FindObjectOfType<Dude2D>();
         anim = GetComponent<Animator>();
-    }
+	    coll = GetComponent<BoxCollider2D>();
+	    coll2 = GetComponent<CapsuleCollider2D>();
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -48,11 +53,14 @@ public class VampireBossScript : MonoBehaviour {
         if(active && state == State.IDLE && !doneIntro)
         {
        
-                state = State.INTRO;
+            state = State.INTRO;
+            if (!doneIntro)
+            {
                 arenaWalls.SetActive(true);
                 doneIntro = true;
-            
-            
+            }
+
+
         }
 
 
@@ -65,6 +73,32 @@ public class VampireBossScript : MonoBehaviour {
                 BatParade();
                 break;
             case State.ATTACK:
+                if (dude.transform.position.x >= transform.position.x)
+                {
+                    if (!flipped) Flip();
+                }
+                else
+                {
+                    if (flipped) Flip();
+                }
+
+                if (anim.GetCurrentAnimatorStateInfo(0).IsName("appear"))
+                {
+                    coll.enabled = false;
+                }
+                else
+                {
+                    coll.enabled = true;
+                }
+
+                if (anim.GetCurrentAnimatorStateInfo(0).IsName("attack"))
+                {
+                    coll2.enabled = true;
+                }
+                else
+                {
+                    coll2.enabled = false;
+                }
                 TpAttack();
                 break;
             default:
@@ -86,6 +120,7 @@ public class VampireBossScript : MonoBehaviour {
     }
     void BatParade()
     {
+
         if (!doingSpecial)
         {
             
@@ -93,11 +128,7 @@ public class VampireBossScript : MonoBehaviour {
             time = 0.0f;
             StartCoroutine(Special());
         }
-        if(time > 10f)
-        {
 
-           // StartCoroutine(SpecialToAttack());
-        }
     }
 
     //private IEnumerator SpecialToAttack()
@@ -137,66 +168,109 @@ public class VampireBossScript : MonoBehaviour {
         doubleJumps.SetActive(false);
         doingSpecial = false;
         anim.SetBool("SpecialAttack", false);
+        state = State.ATTACK;
     }
 
     void TpAttack()
     {
-        if (!isAttacking && attackCount == 0)
+        anim.SetBool("IsVanishing", true);
+        if (!isAttacking && attackCount == 0 && anim.GetCurrentAnimatorStateInfo(0).IsName("appear"))
         {
             StartCoroutine(Attack());
             isAttacking = true;
         }
 
     }
+
+    private void Flip()
+    {
+        Vector3 newScale = transform.localScale;
+        newScale.x *= -1;
+        transform.localScale = newScale;
+        flipped = !flipped;
+    }
     private IEnumerator Attack()
     {
-        yield return new WaitForSeconds(2f);
-        anim.SetBool("IsVanishing", true);
-        while (isAttacking)
+        
+        anim.SetBool("SpecialAttack", false);
+
+
+
+        float t = 0.0f;
+        Vector3 tpPos = maxX.transform.position;
+        bool shouldAttack = true;
+        while (t < 20f)
         {
-            if (anim.GetCurrentAnimatorStateInfo(0).IsName("appear"))
+
+            t += Time.deltaTime;
+            
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("appear") && shouldAttack)
             {
-                //Vector3 tpPos = transform.position;
-                //tpPos.y = -23.2f;
-                //if (dude.transform.position.x > transform.position.x || dude.transform.position.x < minX.transform.position.x)
-                //{
-                //  //  -23.2
-                //    Vector3 newScale = transform.localScale;
-                //    newScale.x *= -1;
-                //    transform.localScale = newScale;
+              
+                
 
-
-                //    tpPos.x = dude.transform.position.x + 2;
-
-                //}else if(dude.transform.position.x < transform.position.x || dude.transform.position.x > maxX.transform.position.x)
-                //{
-                //    tpPos.x = dude.transform.position.x - 2;
-                //}
-                //transform.position = tpPos;
-                //print(tpPos + "ttpos");
-                //print(transform.position + "trans pos");
                 anim.SetBool("IsVanishing", false);
+
+                shouldAttack = false;
                 attackCount++;
-                Vector3 tpPos = maxX.transform.position;
-                tpPos.x += Mathf.CeilToInt(Random.Range(-12f, 12f));
+
+                tpPos.x += Mathf.CeilToInt(Random.Range(-12.5f, 12.5f));
                 transform.position = tpPos;
+                tpPos = maxX.transform.position;
                 print("do the thing");
-            }
-            if (attackCount < 3)
-            {
-                StartCoroutine(Attack());
-            }
-            else
-            {
-                isAttacking = false;
+                yield return new WaitForSeconds(0.5f);
+                anim.SetBool("IsVanishing", true);
+
             }
 
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("disappear"))
+            {
+                shouldAttack = true;
+               
+            }
+
+
+               
+                yield return null;
+            
+           
+            
+           
+            //t += Time.deltaTime;
+            //tpPos.y = -23.2f;
+            //if (dude.transform.position.x > transform.position.x || dude.transform.position.x < minX.transform.position.x)
+            //{
+            //    //  -23.2
+            //    Vector3 newScale = transform.localScale;
+            //    newScale.x *= -1;
+            //    transform.localScale = newScale;
+
+
+            //    tpPos.x = dude.transform.position.x + 2;
+
+            //}
+            //else if (dude.transform.position.x < transform.position.x || dude.transform.position.x > maxX.transform.position.x)
+            //{
+            //    tpPos.x = dude.transform.position.x - 2;
+            //}
+            //transform.position = tpPos;
+            //print(tpPos + "ttpos");
+            //print(transform.position + "trans pos");
         }
 
+        //while (attackCount < 3)
+        //{
+
+    
 
 
+        //}
+        state = State.IDLE;
+        isAttacking = false;
 
-        yield return null;
+       
+
+
     }
 
     void SpawnBat()

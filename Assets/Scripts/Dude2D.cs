@@ -76,16 +76,16 @@ public class Dude2D : MonoBehaviour
             isSprinting = Input.GetKey(KeyCode.LeftShift);
 
         }
-        //if (Input.GetKeyDown(KeyCode.Alpha1)) transform.position = GameObject.Find("Checkpoint1").transform.position;
-        //if (Input.GetKeyDown(KeyCode.Alpha2)) transform.position = GameObject.Find("Checkpoint2").transform.position;
-        //if (Input.GetKeyDown(KeyCode.Alpha3)) transform.position = GameObject.Find("Checkpoint3").transform.position;
-        //if (Input.GetKeyDown(KeyCode.Alpha4)) transform.position = GameObject.Find("Checkpoint4").transform.position;
-        //if (Input.GetKeyDown(KeyCode.Alpha5)) transform.position = GameObject.Find("Checkpoint5").transform.position;
-        //if (Input.GetKeyDown(KeyCode.Alpha6)) transform.position = GameObject.Find("Checkpoint6").transform.position;
-        //if (Input.GetKeyDown(KeyCode.Alpha7)) transform.position = GameObject.Find("Checkpoint7").transform.position;
-        //if (Input.GetKeyDown(KeyCode.Alpha8)) transform.position = GameObject.Find("Checkpoint8").transform.position;
-        //if (Input.GetKeyDown(KeyCode.Alpha9)) transform.position = GameObject.Find("Checkpoint9").transform.position;
-        //if (Input.GetKeyDown(KeyCode.Alpha0)) transform.position = GameObject.Find("Checkpoint10").transform.position;
+        if (Input.GetKeyDown(KeyCode.Alpha1)) transform.position = GameObject.Find("Checkpoint1").transform.position;
+        if (Input.GetKeyDown(KeyCode.Alpha2)) transform.position = GameObject.Find("Checkpoint2").transform.position;
+        if (Input.GetKeyDown(KeyCode.Alpha3)) transform.position = GameObject.Find("Checkpoint3").transform.position;
+        if (Input.GetKeyDown(KeyCode.Alpha4)) transform.position = GameObject.Find("Checkpoint4").transform.position;
+        if (Input.GetKeyDown(KeyCode.Alpha5)) transform.position = GameObject.Find("Checkpoint5").transform.position;
+        if (Input.GetKeyDown(KeyCode.Alpha6)) transform.position = GameObject.Find("Checkpoint6").transform.position;
+        if (Input.GetKeyDown(KeyCode.Alpha7)) transform.position = GameObject.Find("Checkpoint7").transform.position;
+        if (Input.GetKeyDown(KeyCode.Alpha8)) transform.position = GameObject.Find("Checkpoint8").transform.position;
+        if (Input.GetKeyDown(KeyCode.Alpha9)) transform.position = GameObject.Find("Checkpoint9").transform.position;
+        if (Input.GetKeyDown(KeyCode.Alpha0)) transform.position = GameObject.Find("Checkpoint10").transform.position;
 
 
 

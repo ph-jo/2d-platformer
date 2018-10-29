@@ -6,6 +6,7 @@ Assets/TestScene.unity
 SceneListEnd?
 c422dd62785a6d0afa870fbd111886ce Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 7b803eb2910e9b4cd5e521ae07b9f7d6 Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
+2d31b7d1997700c1d84a07b574d94c01 Assembly-CSharp.dll:.ActivateLobster
 486cd95c82d8305219c352c06b776e1f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 9e61f3535f3c55760a1cedfbd114f4af UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 754551afe4f2531f58476bf14c510657 UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
@@ -180,6 +181,7 @@ d75dc834c5dec688db75a55a1724c90f UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 e1ea12ca952c81d81a9a21fdf34446ed UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 98d69a140ec0084cde3b6a5e09aea295 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 dfd33ff9ae3ce8d7ca1f22b475ec2387 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
+28573766a800ea9259614a26b318d950 Assembly-CSharp.dll:.EnemyKillerScript
 aac9c55ae7ba4b95b852a7d9c191acd1 Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
 6baf1205901d7829aaccb53d762c7eea Assembly-CSharp.dll:.BossScript
 b58bc0b798703ce8dfff81a1c97dbbb1 Assembly-CSharp.dll:.spikeScript
@@ -194,7 +196,5 @@ e04611b8715e6833d2bd7010fc6be10b Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.CheckpointController
 93307bd34e39d73fd24e00ec39c25a91 Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 6e02b3c78ff5bc007d79d6af6e7d2e08 Assembly-CSharp.dll:.SpawnEnemy
-ca0a40ffa2393f7214bf0d97eb4987a5 Assembly-CSharp.dll:.Dude2D
-28573766a800ea9259614a26b318d950 Assembly-CSharp.dll:.EnemyKillerScript
 a649ab15d76f09e7a109c947d0b5cabb Assembly-CSharp.dll:.LobsterScript
-2d31b7d1997700c1d84a07b574d94c01 Assembly-CSharp.dll:.ActivateLobster
+ca0a40ffa2393f7214bf0d97eb4987a5 Assembly-CSharp.dll:.Dude2D

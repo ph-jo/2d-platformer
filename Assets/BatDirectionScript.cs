@@ -67,7 +67,7 @@ public class BatDirectionScript : MonoBehaviour {
     {
         if(collision.tag == "Player")
         {
-          // gc.youDiedLOL();
+          gc.youDiedLOL();
         }
     }
 

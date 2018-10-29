@@ -8,6 +8,7 @@ public class GarlicBreadScript : MonoBehaviour {
     private GameController gc;
     private VampireBossScript boss;
     private bool hit = false;
+    private bool hitboss = false;
     // Use this for initialization
     void Start () {
 		
@@ -63,7 +64,13 @@ public class GarlicBreadScript : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (boss == null || (transform.position.x > boss.transform.position.x && transform.position.y > boss.transform.position.y)) Destroy(gameObject);
+        //if (boss == null || (transform.position.x > boss.transform.position.x && transform.position.y > boss.transform.position.y)) Destroy(gameObject);
+        if (hit)
+        {
+            rb2d.velocity = new Vector2((boss.transform.position.x - transform.position.x) * 2f, (boss.transform.position.y - transform.position.y) * 2f);
+        }
+        if (hitboss) Destroy(gameObject);
+
     }
  
     private void OnTriggerEnter2D(Collider2D collision)
@@ -71,9 +78,31 @@ public class GarlicBreadScript : MonoBehaviour {
         if(collision.tag == "Player")
         {
             print("bread hit");
-            rb2d.velocity = new Vector2((boss.transform.position.x - transform.position.x) * 2f, (boss.transform.position.y - transform.position.y) * 2f);
+            hit = true;
+            StartCoroutine(Rotate());
+            
+            
+        }
+        if(collision.tag == "VampireBoss" && hit)
+        {
+            hitboss = true;
             boss.TakeDamage();
         }
 
+    }
+
+    private IEnumerator Rotate()
+    {
+        Quaternion startRot = transform.rotation;
+        float t = 0.0f;
+        float t2 = 0.0f;
+        while (!hitboss)
+        {
+            t2 += Time.deltaTime;
+            t += Time.deltaTime;
+            transform.rotation = startRot * Quaternion.AngleAxis(t / 0.15f * 360f, new Vector3(0, 0, 1)); //or transform.right if you want it to be locally based
+            yield return null;
+
+        }
     }
 }

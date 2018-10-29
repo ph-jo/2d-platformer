@@ -12,8 +12,9 @@ public class VampireBossScript : MonoBehaviour {
     public GameObject garlicBread;
     public GameObject doubleJumps;
     public GameObject maxX;
-    
-    private int health = 3;
+    public GameObject tospawn;
+    public bool specialEnemy = false;
+    private int health = 2;
     private State state = State.IDLE;
     private float time = 0.0f;
     private Animator anim;
@@ -48,9 +49,10 @@ public class VampireBossScript : MonoBehaviour {
     }
     private void FixedUpdate()
     {
+        if (specialEnemy) state = State.ATTACK;
         time += Time.deltaTime;
 
-        if(active && state == State.IDLE && !doneIntro)
+        if(active && state == State.IDLE && !specialEnemy)
         {
        
             state = State.INTRO;
@@ -165,6 +167,7 @@ public class VampireBossScript : MonoBehaviour {
             }
             yield return null;
         }
+        yield return new WaitForSeconds(3f);
         doubleJumps.SetActive(false);
         doingSpecial = false;
         anim.SetBool("SpecialAttack", false);
@@ -174,8 +177,9 @@ public class VampireBossScript : MonoBehaviour {
     void TpAttack()
     {
         anim.SetBool("IsVanishing", true);
-        if (!isAttacking && attackCount == 0 && anim.GetCurrentAnimatorStateInfo(0).IsName("appear"))
+        if (!isAttacking && anim.GetCurrentAnimatorStateInfo(0).IsName("appear"))
         {
+            StartCoroutine(SpawnClones());
             StartCoroutine(Attack());
             isAttacking = true;
         }
@@ -189,6 +193,14 @@ public class VampireBossScript : MonoBehaviour {
         transform.localScale = newScale;
         flipped = !flipped;
     }
+    private IEnumerator SpawnClones()
+    {
+        GameObject bossRoom = GameObject.Find("BossRoom");
+        yield return new WaitForSeconds(Random.Range(0.1f, 0.5f));
+        Instantiate(tospawn, bossRoom.transform);
+        yield return new WaitForSeconds(Random.Range(0.1f, 0.5f));
+        Instantiate(tospawn, bossRoom.transform);
+    }
     private IEnumerator Attack()
     {
         
@@ -198,27 +210,28 @@ public class VampireBossScript : MonoBehaviour {
 
         float t = 0.0f;
         Vector3 tpPos = maxX.transform.position;
+        anim.speed = 0.8f;
         bool shouldAttack = true;
-        while (t < 20f)
+        while (t < 10f)
         {
 
             t += Time.deltaTime;
             
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("appear") && shouldAttack)
             {
-              
-                
 
+
+                
                 anim.SetBool("IsVanishing", false);
 
                 shouldAttack = false;
                 attackCount++;
-
+                
                 tpPos.x += Mathf.CeilToInt(Random.Range(-12.5f, 12.5f));
                 transform.position = tpPos;
                 tpPos = maxX.transform.position;
                 print("do the thing");
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(Random.Range(0.2f, 1.2f));
                 anim.SetBool("IsVanishing", true);
 
             }
@@ -226,6 +239,7 @@ public class VampireBossScript : MonoBehaviour {
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("disappear"))
             {
                 shouldAttack = true;
+
                
             }
 
@@ -257,18 +271,12 @@ public class VampireBossScript : MonoBehaviour {
             //print(tpPos + "ttpos");
             //print(transform.position + "trans pos");
         }
-
-        //while (attackCount < 3)
-        //{
-
-    
-
-
-        //}
+        anim.speed = 1;
+        if (specialEnemy) Destroy(gameObject);
         state = State.IDLE;
         isAttacking = false;
+        if (flipped) Flip();
 
-       
 
 
     }
@@ -310,5 +318,11 @@ public class VampireBossScript : MonoBehaviour {
     private void OnDestroy()
     {
         Instantiate(deathAnimation, transform.position, transform.rotation);
+        arenaWalls.SetActive(false);
+    }
+
+    public void setSpecial()
+    {
+
     }
 }

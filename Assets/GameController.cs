@@ -8,10 +8,8 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     public static GameController instance;
-    public Text coinsText;
     public GameObject gameOver;
     public GameObject lostTheGame;
-    public int coins = 0;
     public bool gameLost = false;
     public GameObject player;
     public GameObject gameWon;
@@ -91,11 +89,6 @@ public class GameController : MonoBehaviour {
         
     }
 
-    public void pickupCoin()
-    {
-        coins++;
-        coinsText.text = coins + "";
-    }
 
    
 

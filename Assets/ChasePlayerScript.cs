@@ -18,6 +18,7 @@ public class ChasePlayerScript : MonoBehaviour {
    
     // Update is called once per frame
     void Update () {
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        print(Vector3.Distance(player.transform.position, transform.position));
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime * (Vector3.Distance(player.transform.position, transform.position)/2));
 	}
 }
